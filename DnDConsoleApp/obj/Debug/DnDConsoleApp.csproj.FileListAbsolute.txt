@@ -1,0 +1,14 @@
+E:\Zooi\TestApps\DnDConsoleApp\DnDConsoleApp\bin\Debug\DnDConsoleApp.exe.config
+E:\Zooi\TestApps\DnDConsoleApp\DnDConsoleApp\bin\Debug\DnDConsoleApp.exe
+E:\Zooi\TestApps\DnDConsoleApp\DnDConsoleApp\bin\Debug\DnDConsoleApp.pdb
+E:\Zooi\TestApps\DnDConsoleApp\DnDConsoleApp\obj\Debug\DnDConsoleApp.csprojAssemblyReference.cache
+E:\Zooi\TestApps\DnDConsoleApp\DnDConsoleApp\obj\Debug\DnDConsoleApp.csproj.CoreCompileInputs.cache
+E:\Zooi\TestApps\DnDConsoleApp\DnDConsoleApp\obj\Debug\DnDConsoleApp.exe
+E:\Zooi\TestApps\DnDConsoleApp\DnDConsoleApp\obj\Debug\DnDConsoleApp.pdb
+E:\Repositories\DnDConsoleApp\DnDConsoleApp\obj\Debug\DnDConsoleApp.csprojAssemblyReference.cache
+E:\Repositories\DnDConsoleApp\DnDConsoleApp\obj\Debug\DnDConsoleApp.csproj.CoreCompileInputs.cache
+E:\Repositories\DnDConsoleApp\DnDConsoleApp\obj\Debug\DnDConsoleApp.exe
+E:\Repositories\DnDConsoleApp\DnDConsoleApp\obj\Debug\DnDConsoleApp.pdb
+E:\Repositories\DnDConsoleApp\DnDConsoleApp\bin\Debug\DnDConsoleApp.exe.config
+E:\Repositories\DnDConsoleApp\DnDConsoleApp\bin\Debug\DnDConsoleApp.exe
+E:\Repositories\DnDConsoleApp\DnDConsoleApp\bin\Debug\DnDConsoleApp.pdb
