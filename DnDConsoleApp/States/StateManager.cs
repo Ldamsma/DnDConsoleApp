@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 class StateManager {
 
 	private State state;
+	internal State previousState { get; private set; }
 
 	internal State ExploringState { get; }
 	internal State CombatState { get; }
@@ -30,6 +31,7 @@ class StateManager {
 		this.state.PrintOptions();
 	}
 	public void ChangeState(State state) {
+		this.previousState = this.state;
 		this.state = state;
 	}
 

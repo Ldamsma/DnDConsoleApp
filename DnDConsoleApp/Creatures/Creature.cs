@@ -10,7 +10,7 @@ abstract class Creature
 	public int Level { get; protected set; }
 
 	public String Name { get; protected set; }
-	public int Health { get; protected set; }
+	public int Health { get; internal set; }
 	public int HitChance { get; protected set; }
 	public int Attacks { get; protected set; }
 	public int Armour { get; protected set; }

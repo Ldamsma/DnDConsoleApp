@@ -10,4 +10,12 @@ abstract class BaseItem {
 	protected virtual void SetDescription() {
 		Description = "Standard itemdescription";
 	}
+
+	public virtual void UseItem() {
+		Game.hero.Health += 5;
+	}
+
+	public virtual String CreateItemDescription() {
+		return "Bad, is base class description";
+	}
 }

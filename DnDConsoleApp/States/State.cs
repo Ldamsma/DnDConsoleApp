@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 abstract class State {
+	protected String _outputMessage;
 
 	public virtual void PrintOptions() {
-		Console.WriteLine("Bad stuff, is base state.");
+		Console.Clear();
 	}
 
 	public virtual void HandleAction(string action) {
