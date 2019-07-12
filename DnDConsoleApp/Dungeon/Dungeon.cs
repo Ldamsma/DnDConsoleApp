@@ -7,52 +7,43 @@ using System.Drawing;
 
 class Dungeon {
 	public Floor[] Floors { get; private set; }
-	public int Width { get; set; }
-	public int Height { get; set; }
+	public int Width { get; private set; }
+	public int Height { get; private set; }
 	public ConsoleColor BorderColor { get; set; }
 	public Room CurrentRoom { get; private set; }
+
+	private Floor _currentFloor;
+	private Byte _floors;
 
 	public Dungeon()
 	{
 		this.Height = 10;
 		this.Width = 10;
+		this._floors = 3;
+		this.Floors = new Floor[_floors];
 		GenerateDungeon();
+		CurrentRoom = GetStartPosition();
+	}
+
+	private Room GetStartPosition() {
+		return _currentFloor.GetStartPosition();
 	}
 
 	public void GenerateDungeon()
 	{
-		Room[,] myRooms = new Room[Width, Height];
-		for (int i = 0; i< Width; i++){
-			for (int j = 0; j< Height; j++)
-			{
-				myRooms[i, j] = new Room(Enums.RoomType.NormalRoom);
-			}
+		for (int i = 0; i < _floors; i++) {
+			Floors[i] = new Floor(Width, Height);
 		}
-		CurrentRoom = myRooms[0, 0];
+		_currentFloor = Floors[0];
 	}
 
 	public String DrawMap()
 	{
-		StringBuilder totalMap = new StringBuilder();
-		string emptySpace = " ";
-		string unvisitedRoom = ".";
+		StringBuilder currentFloor =  _currentFloor.DrawFloor();
 
-		totalMap.AppendLine("Dungeon Map:");
-		for (int i = 0; i < this.Height; i++)
-		{
-			for (int j = 0; j < this.Width; j++)
-			{
-				totalMap.Append(emptySpace);
-				totalMap.Append(unvisitedRoom);
-				totalMap.Append(emptySpace);
-			}
-			totalMap.Append("\n");
-		}
+		AddLegend(ref currentFloor);
 
-		totalMap.AppendLine();
-		AddLegend(ref totalMap);
-
-		return totalMap.ToString();
+		return currentFloor.ToString();
 	}
 
 	private void AddLegend(ref StringBuilder totalMap) {
@@ -66,6 +57,6 @@ class Dungeon {
 	}
 
 	public void Shuffle() {
-		// Implementation pendig.
+		// Implementation pending.
 	}
 }

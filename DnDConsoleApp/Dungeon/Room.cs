@@ -51,7 +51,12 @@ class Room
 		}
 	}
 
-	public bool Visited = false;
+	public bool Visited { get; private set; }
+
+	public Room() {
+		GenerateRoom();
+		GenerateItem();
+	}
 
 	public Room(Enums.RoomType roomType) {
 		this.RoomType = roomType;
@@ -131,5 +136,9 @@ class Room
 			return attributes[0].Description;
 		else
 			return value.ToString();
+	}
+
+	public String GetRoomTypeDescription() {
+		return GetEnumDescription(RoomType);
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,12 +17,12 @@ class Enums
 
     public enum RoomType
     {
-        StartLocation,
-        BossRoom,
-        NormalRoom,
-        StairsUp,
-        StairsDown,
-        Undifined
+		[Description("S")] StartLocation,
+		[Description("F")] BossRoom,
+		[Description("N")] NormalRoom,
+		[Description("U")] StairsUp,
+		[Description("D")] StairsDown,
+		[Description(".")] Undifined
     }
 
     public enum Direction
