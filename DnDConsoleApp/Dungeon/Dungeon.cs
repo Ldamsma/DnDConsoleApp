@@ -21,9 +21,9 @@ class Dungeon {
 
 	public void GenerateDungeon()
 	{
-		Room[,] myRooms = new Room[10,10];
-		for (int i = 0; i<10; i++){
-			for (int j = 0; j<10; j++)
+		Room[,] myRooms = new Room[Width, Height];
+		for (int i = 0; i< Width; i++){
+			for (int j = 0; j< Height; j++)
 			{
 				myRooms[i, j] = new Room(Enums.RoomType.NormalRoom);
 			}
@@ -31,7 +31,7 @@ class Dungeon {
 		CurrentRoom = myRooms[0, 0];
 	}
 
-	public void DrawMap()
+	public String DrawMap()
 	{
 		StringBuilder totalMap = new StringBuilder();
 		string emptySpace = " ";
@@ -52,8 +52,7 @@ class Dungeon {
 		totalMap.AppendLine();
 		AddLegend(ref totalMap);
 
-		Console.Write(totalMap.ToString());
-		Console.ResetColor();
+		return totalMap.ToString();
 	}
 
 	private void AddLegend(ref StringBuilder totalMap) {

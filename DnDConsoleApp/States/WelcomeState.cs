@@ -13,10 +13,13 @@ class WelcomeState : State{
 	}
 
 	public override void PrintOptions() {
+		base.PrintOptions();
+
 		StringBuilder sb = new StringBuilder();
 		sb.AppendLine("STARTSCHERM");
 		sb.AppendLine("What would you like to do?");
 		sb.AppendLine("New Game | Load Game | Options | Quit Game");
+
 		Console.Write(sb);
 	}
 
@@ -24,8 +27,11 @@ class WelcomeState : State{
 		string compare = action.ToLower();
 		switch (compare) {
 			case "new game":
+				Console.WriteLine("Give your character a name:");
+				string name = Console.ReadLine();
+
 				Game.Dungeon = new Dungeon();
-				Game.hero = new Hero();
+				Game.hero = new Hero(name: name);
 				this._statemanager.ChangeState(_statemanager.ExploringState);
 				break;
 			case "load game":

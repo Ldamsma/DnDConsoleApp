@@ -37,10 +37,20 @@ class Room
 	private Size size;
 	private Cleanliness cleanliness;
 	private Dressing dressing;
+	private List<Enemy> _monsters = new List<Enemy>();
 
 	internal BaseItem item = null;
 
 	public Enums.RoomType RoomType = Enums.RoomType.Undifined;
+
+	internal Boolean ContainsEnemies() {
+		if (this._monsters.Count > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public bool Visited = false;
 
 	public Room(Enums.RoomType roomType) {
@@ -98,13 +108,13 @@ class Room
 	}
 
 	public String GetDescription() {
-		if (string.IsNullOrEmpty(this.roomDescription)) {
-			this.roomDescription = $"You enter a {GetEnumDescription(this.size)} {GetEnumDescription(this.cleanliness)} room, containing {GetEnumDescription(this.dressing)}.";
-			if (this.item != null) {
-				this.roomDescription = this.roomDescription + $" In the corner of the room you see a {this.item.Description}!";
-			}
+		this.roomDescription = $"You enter a {GetEnumDescription(this.size)} {GetEnumDescription(this.cleanliness)} room, containing {GetEnumDescription(this.dressing)}.";
+
+		if (this.item != null) {
+			this.roomDescription = this.roomDescription + $" In the corner of the room you see a {this.item.Description}!";
 		}
 		this.Visited = true;
+
 		return this.roomDescription;
 	}
 
