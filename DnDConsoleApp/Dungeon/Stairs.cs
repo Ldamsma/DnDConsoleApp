@@ -5,5 +5,5 @@ using System.Text;
 using System.Threading.Tasks;
 
 class Stairs {
-
+	
 }
