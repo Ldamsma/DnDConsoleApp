@@ -15,12 +15,29 @@ class WelcomeState : State{
 	public override void PrintOptions() {
 		base.PrintOptions();
 
-		StringBuilder sb = new StringBuilder();
-		sb.AppendLine("STARTSCHERM");
+		StringBuilder sb = CreateStartScreen();
+
 		sb.AppendLine("What would you like to do?");
 		sb.AppendLine("New Game | Load Game | Options | Quit Game");
 
 		Console.Write(sb);
+	}
+
+	private StringBuilder CreateStartScreen() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.AppendLine(@"-------------------------------------------------------------------------------------------------");
+		sb.AppendLine(@" _____                                                    _____                                  ");
+		sb.AppendLine(@"|  __ \                                           ___    |  __ \                                 ");
+		sb.AppendLine(@"| |  | |_   _ _ __   __ _  ___  ___  _ __  ___   ( _ )   | |  | |_ __ __ _  __ _  ___  _ __  ___ ");
+		sb.AppendLine(@"| |  | | | | | '_ \ / _` |/ _ \/ _ \| '_ \/ __|  / _ \/\ | |  | | '__/ _` |/ _` |/ _ \| '_ \/ __|");
+		sb.AppendLine(@"| |__| | |_| | | | | (_| |  __/ (_) | | | \__ \ | (_>  < | |__| | | | (_| | (_| | (_) | | | \__ \");
+		sb.AppendLine(@"|_____/ \__,_|_| |_|\__, |\___|\___/|_| |_|___/  \___/\/ |_____/|_|  \__,_|\__, |\___/|_| |_|___/");
+		sb.AppendLine(@"                     __/ |                                                  __/ |                ");
+		sb.AppendLine(@"                    |___/                                                  |___/                 ");
+		sb.AppendLine(@"-------------------------------------------------------------------------------------------------");
+
+		return sb;
 	}
 
 	public override void HandleAction(String action) {
