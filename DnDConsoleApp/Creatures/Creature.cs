@@ -29,6 +29,19 @@ abstract class Creature
 		Level = level;
 	}
 
+	public Creature(Int32 xpValue, String name, Int32 health, Int32 level, Int32 attacks, Int32 hitChance, Int32 armour, string damage) : this(xpValue, name, health, level) {
+		this.Attacks = attacks;
+		this.HitChance = hitChance;
+		this.Armour = armour;
+		SetDamage(damage);
+	}
+
+	private void SetDamage(String damage) {
+		String[] damageArray = damage.Split(char.Parse("-"));
+		MinimumDamage = int.Parse(damageArray.GetValue(0).ToString());
+		MaximumDamage = int.Parse(damageArray.GetValue(1).ToString());
+	}
+
 	protected int CalculateDamage() {
 		Random random = new Random();
 		return random.Next(MinimumDamage, MaximumDamage);
