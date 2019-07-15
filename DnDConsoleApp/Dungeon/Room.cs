@@ -33,6 +33,14 @@ class Room
 		Empty
 	}
 
+	internal String GetEnemyDescription() {
+		StringBuilder sb = new StringBuilder();
+		if (_monsters.Count > 0) {
+			sb.AppendLine($"In the room you see {_monsters.Count} {_monsters[1].Name}s, staring at you!");
+		}
+		return sb.ToString();
+	}
+
 	private String roomDescription = string.Empty;
 	private Size size;
 	private Cleanliness cleanliness;
@@ -56,12 +64,22 @@ class Room
 	public Room() {
 		GenerateRoom();
 		GenerateItem();
+		GenerateEnemies();
+	}
+
+	private void GenerateEnemies() {
+		Enemy enemyTemplate = Game.MonsterList.Find((x) => x.Name == "rat");
+
+		_monsters.Add((Enemy)enemyTemplate.Clone());
+		_monsters.Add((Enemy)enemyTemplate.Clone());
+		_monsters.Add((Enemy)enemyTemplate.Clone());
 	}
 
 	public Room(Enums.RoomType roomType) {
 		this.RoomType = roomType;
 		GenerateRoom();
 		GenerateItem();
+		GenerateEnemies();
 	}
 
 	// Bestaat uit een grootte, opgeruimd / smerig, en heeft aankleding.

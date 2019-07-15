@@ -13,12 +13,18 @@ class ExploringState : State {
 
 	public override void PrintOptions() {
 		base.PrintOptions();
+
 		if (!string.IsNullOrEmpty(this._outputMessage)) { Console.WriteLine(this._outputMessage); };
+
 		StringBuilder sb = new StringBuilder();
 		sb.AppendLine(Game.Dungeon.CurrentRoom.GetDescription());
+
+		if (Game.Dungeon.CurrentRoom.ContainsEnemies()) { sb.AppendLine(Game.Dungeon.CurrentRoom.GetEnemyDescription()); }
+
 		sb.AppendLine("What would you like to do?");
 		sb.AppendLine("Fight|Run|GrabItem|Rest|OpenInventory|ShowMap|ShowCharacteristics|Quit");
 		Console.WriteLine(sb.ToString());
+
 		this._outputMessage = string.Empty;
 	}
 
