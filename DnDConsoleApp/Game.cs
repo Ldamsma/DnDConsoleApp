@@ -4,16 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.IO;
 
 class Game{
 	public static bool _keepRunning = true;
 	public static Dungeon Dungeon;
 	public static Hero hero;
 
+	internal static List<Enemy> MonsterList = new List<Enemy>();
+
+	private enum MonsterInfoColumns {
+		Name,
+		Level,
+		Attack,
+		Damage,
+		Armour,
+		Health
+	}
+
 	static void Main(string[] args)
 	{
 		StateManager manager = new StateManager();
-
+		ReadMonsterList();
 		do
 		{
 			manager.PrintOptions();
@@ -39,5 +51,31 @@ class Game{
 
 		// Quit game pressed: 
 		// Dispose all resources and close console app.
+	}
+
+	static void ReadMonsterList() {
+		if (MonsterList.Count == 0) {
+			string line;
+			StreamReader reader = new StreamReader("E:\\monsters.txt");
+			while ((line = reader.ReadLine()) != null) {
+				if (line.StartsWith("[")){
+					string enemyString = line.Substring(1, line.Length - 2);
+					String[] enemyStats = enemyString.Split(char.Parse(";"));
+					String[] hitInfo = enemyStats.GetValue((int)MonsterInfoColumns.Attack).ToString().Split(Char.Parse("x"));
+
+					int res = 0;
+					int level = 99;
+					if (int.TryParse(enemyStats.GetValue((int)MonsterInfoColumns.Level).ToString(), out res)) { level = res; }
+
+					MonsterList.Add(new Enemy(0, enemyStats.GetValue((int)MonsterInfoColumns.Name).ToString(),
+												 int.Parse(enemyStats.GetValue((int)MonsterInfoColumns.Health).ToString()),
+												 level,
+												 int.Parse(hitInfo.GetValue(0).ToString()),
+												 int.Parse(hitInfo.GetValue(1).ToString()),
+												 int.Parse(enemyStats.GetValue((int)MonsterInfoColumns.Armour).ToString()),
+												 enemyStats.GetValue((int)MonsterInfoColumns.Damage).ToString()));
+				}
+			}
+		}
 	}
 }
