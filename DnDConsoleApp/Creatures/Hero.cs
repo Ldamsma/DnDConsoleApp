@@ -11,13 +11,13 @@ class Hero : Creature
 	//private List<Item> Items { get; set; }
 	public override int XPValue {
 		get {
-			return _heroXP;
+			return this._heroXP;
 		}
 		protected set {
 			_heroXP = _heroXP + value;
 
 			// Level up?
-			if (_heroXP >= Level)
+			if (this._heroXP >= Level)
 			{
 				// level berekening
 			}
@@ -42,6 +42,7 @@ class Hero : Creature
 		sb.AppendLine($"Heallth: {Health}");
 		sb.AppendLine($"Level: {Level}");
 		sb.AppendLine($"Experience: {_heroXP}");
+		sb.AppendLine($"Armour: {Armour}");
 
 		return sb.ToString();
 	}
